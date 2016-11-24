@@ -1,9 +1,18 @@
 Package: brlrmr
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.3.2)
-License: What license is it under?
+Title: This provides the estimates using IL method and FIL method as described
+    in the reference
+Version: 0.0.9
+Date: 2016-11-23
+Authors@R: person("Arnab", "Maity", email = "akumar@stat.tamu.edu", role = c("aut", "cre"))
+Description: For details see reference.
+Imports:
+    boot,
+    brglm,
+    MASS,
+    profileModel,
+    Rcpp,
+    stats
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 5.0.1
