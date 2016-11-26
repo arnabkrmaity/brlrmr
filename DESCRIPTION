@@ -8,7 +8,7 @@ Authors@R: c(person("Arnab", "Maity", email = "akumar@stat.tamu.edu", role = c("
              person("Ujjwal", "Das", email = "ujjwal.das@iimu.ac.in", role = "aut"),
              person("Brenton", "Kenkel", email = "brenton.kenkel@vanderbilt.edu", role = "aut"))
 Description: See reference for details.
-Depends: R (>= 2.6.0)
+Depends: R (>= 2.10)
 Imports:
     boot,
     brglm,
