@@ -98,9 +98,7 @@ Arnab Kumar Maity
 #############################################
 ########### Simulated Example ###############
 #############################################
-require(boot)  # load boot
-
-n <- 100  # number of observations
+data(simulated.data)
 
 # parameter definition
 beta0 <- 1
@@ -120,35 +118,7 @@ alpha5 <- -1
 parameter <- c(beta0, beta1, beta2, beta3, beta4,
                alpha0, alpha1, alpha2, alpha3, alpha4, alpha5)
 
-x1 <- rnorm(n)  # random sample from N(0, sd = 1)
-x2 <- rnorm(n)  # random sample from N(0, sd = 1)
-x3 <- rnorm(n)  # random sample from N(0, sd = 1)
-x4 <- rnorm(n)  # random sample from N(0, sd = 1)
-
-probability.y <- inv.logit(beta0 + beta1*x1 + beta2*x2 + beta3*x3 + beta4*x4)
-# probabilities to generate y
-
-bernoulli <- function(probability)
-  # This will return random sample from a Bernoulli Distribution
-  # with given probability
-{
-  return(rbinom(1, size = 1, probability))
-}
-
-y <- sapply(probability.y, bernoulli)   # response
-
-probability.r <- inv.logit(alpha0 + alpha1*x1 + alpha2*x2 + alpha3*x3
-                           + alpha4*x4 + alpha5*y) # probabilities to generate r
-
-r <- sapply(probability.r, bernoulli)   # missing indicator
-
-original.data  <- cbind(y, x1, x2, x3, x4, r)
-observed.data  <- subset(original.data, r == 0)
-missing.data   <- subset(original.data, r == 1)
-missing.data[, 1] <- NA
-
-data <- rbind(observed.data, missing.data)[, 1:5]
-
+data <- simulated.data
 fil(data, parameter, family = binomial(link = "logit"))
 }
 
