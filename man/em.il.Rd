@@ -16,7 +16,7 @@ em.il(parameter, X, full.missing.data, observed.data, full.data, family)
 \arguments{
   \item{parameter}{
 %%     ~~Describe \code{parameter} here~~
-The starting values of the parameters as (beta, alpha) where beta is the parameters of original model and alpha is the for the missing data model.
+The starting values of the parameters as (\eqn{\beta, \alpha}) where \eqn{\beta} is the parameters of original model and \eqn{\alpha} is the for the missing data model.
 }
   \item{X}{
 %%     ~~Describe \code{X} here~~
