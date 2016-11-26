@@ -1,7 +1,7 @@
 #' @importFrom stats binomial qnorm
 
 fil <-
-function(data, parameter = NULL, family = binomial, tau = qnorm(0.975), interaction = FALSE,
+function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
                 k = NULL)
 {
 
@@ -17,6 +17,7 @@ function(data, parameter = NULL, family = binomial, tau = qnorm(0.975), interact
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
 
+  tau <- qnorm(1 - alpha/2)
   n   <- nrow(data)  # number of observations
   p1  <- ncol(data)  # number of covariates + 1
 

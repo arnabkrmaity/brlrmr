@@ -10,7 +10,7 @@ fil
 This provides the estimates using IL method and FIL method as described in the reference.
 }
 \usage{
-fil(data, parameter = NULL, family = binomial, tau = qnorm(0.975),
+fil(data, parameter = NULL, family = binomial, alpha = 0.05,
 interaction = FALSE, k = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -26,9 +26,9 @@ The starting values of the parameters as (beta, alpha) where beta is the paramet
   \item{family}{
   as in \code{\link{glm}}. \code{brlrmr} currently supports only the  \code{"binomial"} family with links
   }
-  \item{tau}{
+  \item{alpha}{
 %%     ~~Describe \code{tau} here~~
-Upper 100(1 - tau)\% point of standard Normal distribution. The default is 1.96.
+Upper 100(1 - alpha)\% point of standard Normal distribution. The default is 1.96.
 }
   \item{interaction}{
 %%     ~~Describe \code{interaction} here~~
@@ -53,8 +53,8 @@ Which covariate has interaction with response. Takes integer values. User must a
   \item{z.value.il }{Wald Z value using IL method.}
   \item{p.value.il }{p value using IL method.}
   \item{significance.beta.il }{is indicator output whether regressors are significant using IL method, 1 if significant and 0 if not significant.}
-  \item{LCL.il }{Lower Confidence Limits of 95\% Confidence Intervals.}
-  \item{UCL.il }{Upper Confidence Limits of 95\% Confidence Intervals.}
+  \item{LCL.il }{Lower Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
+  \item{UCL.il }{Upper Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
   \item{alpha.hat.il }{parameter estimate due to missing model using IL.}
   \item{alpha.se.hat.il }{standard error of the them.}
   \item{z.value.il.alpha }{Wald Z value for them.}
@@ -64,8 +64,8 @@ Which covariate has interaction with response. Takes integer values. User must a
   \item{z.value.firth }{Wald Z value using FIL method.}
   \item{p.value.firth }{p value using FIL method.}
   \item{significance.beta.firth }{indicator output whether regressors are significant using FIL method, 1 if significant and 0 if not significant.}
-  \item{LCL.firth }{Lower Confidence Limits of 95\% Confidence Intervals.}
-  \item{UCL.firth }{Upper Confidence Limits of 95\% Confidence Intervals.}
+  \item{LCL.firth }{Lower Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
+  \item{UCL.firth }{Upper Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
   \item{alpha.hat.fil }{parameter estimate due to missing model using FIL.}
   \item{alpha.se.hat.fil }{standard error of the them.}
   \item{z.value.fil.alpha }{Wald Z value for them.}
