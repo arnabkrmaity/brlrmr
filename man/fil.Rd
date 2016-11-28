@@ -77,7 +77,7 @@ Bias Reduction in Logistic Regression with Missing Responses when the Missing Da
 }
 \author{
 %%  ~~who you are~~
-Arnab Kumar Maity
+Arnab Kumar Maity, Vivek Pradhan, and Ujjwal Das
 }
 %\note{
 %%  ~~further notes~~

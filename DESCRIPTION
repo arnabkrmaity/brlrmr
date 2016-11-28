@@ -5,8 +5,7 @@ Version: 0.0.9
 Date: 2016-11-23
 Authors@R: c(person("Arnab", "Maity", email = "akumar@stat.tamu.edu", role = c("aut", "cre")),
              person("Vivek", "Pradhan", email = "vip296@mail.harvard.edu", role = "aut"),
-             person("Ujjwal", "Das", email = "ujjwal.das@iimu.ac.in", role = "aut"),
-             person("Brenton", "Kenkel", email = "brenton.kenkel@vanderbilt.edu", role = "aut"))
+             person("Ujjwal", "Das", email = "ujjwal.das@iimu.ac.in", role = "aut"))
 Description: See reference for details.
 Depends: R (>= 2.10)
 Imports:
