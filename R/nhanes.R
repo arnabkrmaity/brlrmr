@@ -8,5 +8,6 @@
 #'   \item{age2}{Age group (1 = 40-59, 0 = otherwise)}
 #'   \item{age3}{Age group (1 = 60+, 0 = otherwise)}
 #' }
-#' @source \url{http://www.diamondse.info/}
+#' @source Schafer, J.L. (1997). \emph{Analysis of Incomplete Multivariate Data.}
+#' London: Chapman & Hall. Table 6.14.
 "nhanes"

@@ -24,7 +24,7 @@ The first column of data is binary missing response. The missing observations ar
 The starting values of the parameters as (\eqn{\beta, \alpha}) where \eqn{\beta} is the parameters of original model and \eqn{\alpha} is the for the missing data model.
 }
   \item{family}{
-  as in \code{\link{glm}}. \code{brlrmr} currently supports only the  \code{"binomial"} family with links
+  as in \code{\link{glm}}. \code{brlrmr} currently supports only the \code{"binomial"} family with links
   }
   \item{alpha}{
 %%     ~~Describe \code{tau} here~~
