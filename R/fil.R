@@ -62,122 +62,6 @@ function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = 
   if(interaction)
   {
 
-    em.il.result      <- em.il.interaction(parameter, X, full.missing.data,
-                                           observed.data, full.data, k,
-                                           family = family)
-    current.Q         <- em.il.result$Q
-    current.parameter <- em.il.result$parameter
-
-
-    error <- 1000
-    count <- 1
-
-    while(error > 0.0001)
-    {
-
-      em.il.result      <- em.il.interaction(current.parameter, X, full.missing.data,
-                                             observed.data, full.data, k,
-                                             family = family)
-      next.Q            <- em.il.result$Q
-      error             <- abs(next.Q - current.Q)
-      current.Q         <- next.Q
-      current.parameter <- em.il.result$parameter
-      count             <- count + 1
-
-    }
-
-
-    beta.hat <- current.parameter
-
-    if(sum(abs(beta.hat) > 10) > 0)
-    {
-      beta.hat = NA
-      beta.se.hat = NA
-      significance.beta = NA
-    } else {
-      w      <- em.il.result$weights  # weights
-      n.full <- nrow(full.data)
-
-      Fisher <- em.il.result$Fisher
-      full.X <- cbind(1, full.data[, 2:p1])
-      mu     <- boot::inv.logit(full.X %*% current.parameter[1:p1])
-      full.y <- full.data[, 1]
-      q      <- NULL
-
-      for(j in 1:p1)
-      {
-        q[j] <- sum(w * (full.y - mu) * full.X[, j])
-      }
-
-      s <- matrix(0, nrow = n.full, ncol = p1)
-
-      for(i in 1:n.full)
-      {
-        for(j in 1:p1)
-        {
-          s[i, j] <- (full.y[i] - mu[i]) * full.X[i, j]
-        }  # S_i is p dimensional vector
-      }
-
-      second.term <- 0
-
-      for(i in 1:n.full)
-      {
-        second.term <- second.term + w[i] * (s[i, ] %*% t(s[i, ]))
-      }
-
-      Information <- Fisher - (second.term - q %*% t(q))
-      se.matrix <- MASS::ginv(Information)
-
-
-      beta.se.hat <- sqrt(diag(se.matrix))
-
-
-
-
-      Fisher <- em.il.result$Fisher.alpha
-      full.X <- cbind(full.X, full.y * full.X[, k + 1], full.y)
-      mu     <- boot::inv.logit(full.X %*% current.parameter[(p1 + 1):length(beta.hat)])
-      q      <- rep(0, p1 + 2)
-      full.r <- full.data[, (p1 + 1)]
-
-
-
-      for(j in 1:(p1 + 2))
-      {
-        q[j] <- sum(w * (full.y - mu) * full.X[, j])
-      }
-
-
-
-      s <- matrix(0, nrow = n.full, ncol = p1 + 2)
-
-      for(i in 1:n.full)
-      {
-        for(j in 1:(p1 + 2))
-        {
-          s[i, j] <- (full.y[i] - mu[i]) * full.X[i, j]
-        }  # S_i is p dimensional vector
-      }
-
-      second.term <- 0
-
-      for(i in 1:n.full)
-      {
-        second.term <- second.term + w[i] * (s[i, ] %*% t(s[i, ]))
-      }
-
-      Information <- Fisher - (second.term - q %*% t(q))
-      se.matrix <- MASS::ginv(Information)
-
-
-      alpha.se.hat <- sqrt(diag(se.matrix))
-    }
-
-
-
-
-
 
     ############## Firth Correction ##################
 
@@ -284,116 +168,6 @@ function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = 
     alpha.se.hat.firth <- sqrt(diag(se.matrix))
 
   } else {
-
-    em.il.result      <- em.il(parameter, X, full.missing.data,
-                               observed.data, full.data, family = family)
-    current.Q         <- em.il.result$Q
-    current.parameter <- em.il.result$parameter
-
-
-    error <- 1000
-    count <- 1
-
-    while(error > 0.0001)
-    {
-
-      em.il.result      <- em.il(current.parameter, X, full.missing.data,
-                                 observed.data, full.data, family = family)
-      next.Q            <- em.il.result$Q
-      error             <- abs(next.Q - current.Q)
-      current.Q         <- next.Q
-      current.parameter <- em.il.result$parameter
-      count             <- count + 1
-
-    }
-
-
-    beta.hat <- current.parameter
-
-
-    if(sum(abs(beta.hat) > 10) > 0)
-    {
-      beta.hat     <- NA
-      beta.se.hat  <- NA
-      alpha.se.hat <- NA
-      alpha.se.hat <- NA
-    } else {
-
-      w      <- em.il.result$weights  # weights
-      n.full <- nrow(full.data)
-
-      Fisher <- em.il.result$Fisher
-      full.X <- cbind(1, full.data[, 2:p1])
-      mu     <- boot::inv.logit(full.X %*% current.parameter[1:p1])
-      full.y <- full.data[, 1]
-      full.r <- full.data[, (p1 + 1)]
-      q      <- NULL
-
-      for(j in 1:p1)
-      {
-        q[j] <- sum(w * (full.y - mu) * full.X[, j])
-      }
-
-      s <- matrix(0, nrow = n.full, ncol = p1)
-
-      for(i in 1:n.full)
-      {
-        for(j in 1:p1)
-        {
-          s[i, j] <- (full.y[i] - mu[i]) * full.X[i, j]
-        }  # S_i is p dimensional vector
-      }
-
-      second.term <- 0
-
-      for(i in 1:n.full)
-      {
-        second.term <- second.term + w[i] * (s[i, ] %*% t(s[i, ]))
-      }
-
-      Information <- Fisher - (second.term - q %*% t(q))
-      se.matrix <- MASS::ginv(Information)
-
-
-      beta.se.hat <- sqrt(diag(se.matrix))
-
-      Fisher.alpha <- em.il.result$Fisher.alpha
-      q      <- rep(0, p1 + 1)
-
-
-      for(j in 1:p1)
-      {
-        q[j] <- sum(w * (full.r - mu) * full.X[, j])
-      }
-      q[p1 + 1] <- sum(w * (full.r - mu) * full.y)
-
-      s <- matrix(0, nrow = n.full, ncol = (p1 + 1))
-
-      for(i in 1:n.full)
-      {
-        for(j in 1:p1)
-        {
-          s[i, j] <- (full.r[i] - mu[i]) * full.X[i, j]
-        }  # S_i is p dimensional vector
-        s[i, (p1 + 1)] <- (full.r[i] - mu[i]) * full.y[i]
-      }
-
-      second.term <- 0
-
-      for(i in 1:n.full)
-      {
-        second.term <- second.term + w[i] * (s[i, ] %*% t(s[i, ]))
-      }
-
-      Information <- Fisher.alpha - (second.term - q %*% t(q))
-      se.matrix <- MASS::ginv(Information)
-
-
-      alpha.se.hat <- sqrt(diag(se.matrix))
-    }
-
-
-
 
 
     ############## Firth Correction ##################
@@ -503,31 +277,20 @@ function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = 
   }
 
 
-  return(list(n                     = n,
-              nmissing              = nmissing,
-              missing.proportion    = nmissing/n,
-              beta.hat.il           = beta.hat[1:p1],
-              beta.se.hat.il        = beta.se.hat,
-              z.value.il            = (abs(beta.hat[1:p1] - 0)/beta.se.hat),
-              p.value.il            = 2 * (1 - stats::pnorm((abs(beta.hat[1:p1] - 0)/beta.se.hat))),
-              significance.beta.il  = (abs(beta.hat[1:p1] - 0)/beta.se.hat) > tau,
-              LCL.il                = beta.hat[1:p1] - tau * beta.se.hat,
-              UCL.il                = beta.hat[1:p1] + tau * beta.se.hat,
-              alpha.hat.il         = beta.hat[(p1 +1):length(beta.hat)],
-              alpha.se.hat.il      = alpha.se.hat,
-              z.value.il.alpha     = (abs(beta.hat[(p1 +1):length(beta.hat)] - 0)/alpha.se.hat),
-              p.value.il.alpha     = 2 * (1 - stats::pnorm((abs(beta.hat[(p1 +1):length(beta.hat)] - 0)/alpha.se.hat))),
-              beta.hat.fil          = beta.hat.firth[1:p1],
-              beta.se.hat.fil       = beta.se.hat.firth,
-              z.value.fil           = (abs(beta.hat.firth[1:p1] - 0)/beta.se.hat.firth),
-              p.value.fil           = 2 * (1 - stats::pnorm((abs(beta.hat.firth[1:p1] - 0)/beta.se.hat.firth))),
-              significance.beta.fil = (abs(beta.hat.firth[1:p1] - 0)/beta.se.hat.firth) > tau,
-              LCL.fil               = beta.hat.firth[1:p1] - tau * beta.se.hat.firth,
-              UCL.fil               = beta.hat.firth[1:p1] + tau * beta.se.hat.firth,
-              alpha.hat.fil         = beta.hat.firth[(p1 +1):length(beta.hat.firth)],
-              alpha.se.hat.fil      = alpha.se.hat.firth,
-              z.value.fil.alpha     = (abs(beta.hat.firth[(p1 +1):length(beta.hat.firth)] - 0)/alpha.se.hat.firth),
-              p.value.fil.alpha     = 2 * (1 - stats::pnorm((abs(beta.hat.firth[(p1 +1):length(beta.hat.firth)] - 0)/alpha.se.hat.firth)))
+  return(list(n                  = n,
+              nmissing           = nmissing,
+              missing.proportion = nmissing/n,
+              beta.hat           = beta.hat.firth[1:p1],
+              beta.se.hat        = beta.se.hat.firth,
+              z.value            = (abs(beta.hat.firth[1:p1] - 0)/beta.se.hat.firth),
+              p.value            = 2 * (1 - stats::pnorm((abs(beta.hat.firth[1:p1] - 0)/beta.se.hat.firth))),
+              significance.beta  = (abs(beta.hat.firth[1:p1] - 0)/beta.se.hat.firth) > tau,
+              LCL                = beta.hat.firth[1:p1] - tau * beta.se.hat.firth,
+              UCL                = beta.hat.firth[1:p1] + tau * beta.se.hat.firth,
+              alpha.hat          = beta.hat.firth[(p1 +1):length(beta.hat.firth)],
+              alpha.se.hat       = alpha.se.hat.firth,
+              z.value.alpha      = (abs(beta.hat.firth[(p1 +1):length(beta.hat.firth)] - 0)/alpha.se.hat.firth),
+              p.value.alpha      = 2 * (1 - stats::pnorm((abs(beta.hat.firth[(p1 +1):length(beta.hat.firth)] - 0)/alpha.se.hat.firth)))
   )
   )
 }
