@@ -25,13 +25,16 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   mf[[1L]] <- quote(stats::model.frame)
   mf <- eval(mf, parent.frame())
   y <- model.response(mf, "numeric")
+  print(y)
   mt <- attr(mf, "terms")
   if (is.empty.model(mt)) {
     x <- NULL
   } else {
     x <- model.matrix(mt, mf, contrasts)
   }
+  print(x)
   data <- cbind(y, x[, -1])
+  print(data)
 
   tau <- qnorm(1 - alpha/2)
   n   <- nrow(data)  # number of observations
