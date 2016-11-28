@@ -10,4 +10,4 @@
 #' @source Heinze, G. (2006). A comparative investigation of methods for logistic
 #' regression with seperated or nearly separated data. \emph{Statistics in Medicine},
 #' 25:4216--4226.
-"nhanes"
+"incontinence"
