@@ -127,8 +127,10 @@ fil(data, parameter, family = binomial(link = "logit"))
 ##### Real data example with separation #####
 #############################################
 data(nhanes)  # load nhanes data
-
 fil(nhanes, family = binomial(link = "logit"))
+
+data(incontinence)  # load nhanes data
+fil(incontinence, family = binomial(link = "logit"))
 }
 }
 
