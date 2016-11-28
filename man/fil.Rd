@@ -28,7 +28,7 @@ The starting values of the parameters as (\eqn{\beta, \alpha}) where \eqn{\beta}
   }
   \item{alpha}{
 %%     ~~Describe \code{tau} here~~
-Upper 100(1 - alpha)\% point of standard Normal distribution. The default is 1.96.
+This is used for upper 100(1 - alpha)\% point of standard Normal distribution. The default is 1.96.
 }
   \item{interaction}{
 %%     ~~Describe \code{interaction} here~~
