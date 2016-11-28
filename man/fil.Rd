@@ -48,28 +48,17 @@ Which covariate has interaction with response. Takes integer values. User must a
   \item{n }{number of observations.}
   \item{nmissing }{the number of missing observations.}
   \item{missing.proportion }{proportion of missing observations.}
-  \item{beta.hat.il }{parameter estimate of logsitic regression of y on x using IL method.}
-  \item{beta.se.hat.il }{standard error using IL method.}
-  \item{z.value.il }{Wald Z value using IL method.}
-  \item{p.value.il }{p value using IL method.}
-  \item{significance.beta.il }{is indicator output whether regressors are significant using IL method, 1 if significant and 0 if not significant.}
-  \item{LCL.il }{Lower Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
-  \item{UCL.il }{Upper Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
-  \item{alpha.hat.il }{parameter estimate due to missing model using IL.}
-  \item{alpha.se.hat.il }{standard error of the them.}
-  \item{z.value.il.alpha }{Wald Z value for them.}
-  \item{p.value.il.alpha }{p values for them.}
-  \item{beta.hat.firth }{parameter estimate of logistic regression of y on x using FIL method.}
-  \item{beta.se.hat.firth }{standard error using FIL method.}
-  \item{z.value.firth }{Wald Z value using FIL method.}
-  \item{p.value.firth }{p value using FIL method.}
+  \item{beta.hat }{parameter estimate of logistic regression of y on x using FIL method.}
+  \item{beta.se.hat }{standard error using FIL method.}
+  \item{z.value }{Wald Z value using FIL method.}
+  \item{p.value }{p value using FIL method.}
   \item{significance.beta.firth }{indicator output whether regressors are significant using FIL method, 1 if significant and 0 if not significant.}
-  \item{LCL.firth }{Lower Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
-  \item{UCL.firth }{Upper Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
-  \item{alpha.hat.fil }{parameter estimate due to missing model using FIL.}
-  \item{alpha.se.hat.fil }{standard error of the them.}
-  \item{z.value.fil.alpha }{Wald Z value for them.}
-  \item{p.value.fil.alpha }{p values for them.}
+  \item{LCL }{Lower Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
+  \item{UCL }{Upper Confidence Limits of 100(1 - alpha)\% Confidence Intervals.}
+  \item{alpha.hat }{parameter estimate due to missing model using FIL.}
+  \item{alpha.se.hat }{standard error of the them.}
+  \item{z.value.alpha }{Wald Z value for them.}
+  \item{p.value.alpha }{p values for them.}
 }
 \references{
 %% ~put references to the literature/web site here ~
