@@ -126,10 +126,9 @@ fil(data, parameter, family = binomial(link = "logit"))
 #############################################
 ##### Real data example with separation #####
 #############################################
-require(nhanes)  # load nhanes data
+data(nhanes)  # load nhanes data
 
-fil(nhanes, parameter, family = binomial(link = "logit"))
-fil(nhanes, family = binomial(link = "logit"))  # Result should be same
+fil(nhanes, family = binomial(link = "logit"))
 }
 }
 
