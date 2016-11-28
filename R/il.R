@@ -1,6 +1,6 @@
 #' @importFrom stats binomial qnorm
 
-fil <-
+il <-
   function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
            k = NULL)
   {
