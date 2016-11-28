@@ -98,7 +98,7 @@ Arnab Kumar Maity, Vivek Pradhan, and Ujjwal Das
 #############################################
 ########### Simulated Example ###############
 #############################################
-data(simulated.data)
+data(simulated.data)  # load simulated data
 
 # parameter definition
 beta0 <- 1
@@ -126,48 +126,10 @@ fil(data, parameter, family = binomial(link = "logit"))
 #############################################
 ##### Real data example with separation #####
 #############################################
-require(mice)  # load mice
+require(nhanes)  # load nhanes data
 
-data <- cbind(nhanes[, 3], nhanes[, 1])
-n    <- nrow(data) # sample size
-
-# age is entered in the model as two dummy variables
-age2 <- rep(0, n)
-age3 <- rep(0, n)
-
-for(i in 1:n)
-{
-  if(data[i, 2] == 2)
-  {
-    age2[i] = 1
-  }
-  if(data[i, 2] == 3)
-  {
-    age3[i] = 1
-  }
-}
-
-data <- cbind(nhanes[, 3], age2, age3)
-
-# parameter definition
-beta0 <- 1
-beta1 <- 1
-beta2 <- 1
-
-# parameter definition for missing indicator
-alpha0 <- 2
-alpha1 <- -10
-alpha2 <- -7
-alpha3 <- -10
-
-parameter <- c(beta0, beta1, beta2,
-               alpha0, alpha1, alpha2, alpha3)
-
-data[which(data[, 1] == 1), 1] <- 0
-data[which(data[, 1] == 2), 1] <- 1
-
-fil(data, parameter, family = binomial(link = "logit"))
-fil(data, family = binomial(link = "logit"))  # Result should be same
+fil(nhanes, parameter, family = binomial(link = "logit"))
+fil(nhanes, family = binomial(link = "logit"))  # Result should be same
 }
 }
 
