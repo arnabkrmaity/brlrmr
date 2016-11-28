@@ -1,7 +1,7 @@
 #' @importFrom stats binomial qnorm
 
 fil <-
-function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
+function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
                 k = NULL)
 {
 
@@ -16,6 +16,22 @@ function(data, parameter = NULL, family = binomial, alpha = 0.05, interaction = 
   }
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
+
+  cl <- match.call()
+  mf <- match.call(expand.dots = FALSE)
+  m <- match(c("formula", "data"), names(mf), 0L)
+  mf <- mf[c(1L, m)]
+  mf$drop.unused.levels <- TRUE
+  mf[[1L]] <- quote(stats::model.frame)
+  mf <- eval(mf, parent.frame())
+  y <- model.response(mf, "numeric")
+  mt <- attr(mf, "terms")
+  if (is.empty.model(mt)) {
+    x <- NULL
+  } else {
+    x <- model.matrix(mt, mf, contrasts)
+  }
+  data <- cbind(y, x[, -1])
 
   tau <- qnorm(1 - alpha/2)
   n   <- nrow(data)  # number of observations
