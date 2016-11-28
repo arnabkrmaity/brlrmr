@@ -16,8 +16,8 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   }
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
-
-  cl <- match.call()
+  if (missing(data))
+    data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)
   m <- match(c("formula", "data"), names(mf), 0L)
   mf <- mf[c(1L, m)]
