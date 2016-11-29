@@ -16,7 +16,7 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   }
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
-  if (na.action != na.pass)
+  if (na.action != "na.pass")
     stop("unable to pass missing values")
   if (missing(data))
     data <- environment(formula)
