@@ -1,4 +1,6 @@
 #' @importFrom stats binomial qnorm
+#' @importFrom stats, contrasts, is.empty.model, model.matrix, model.response,
+#' na.pass
 
 fil <-
 function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
