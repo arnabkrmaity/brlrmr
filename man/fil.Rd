@@ -114,7 +114,7 @@ parameter <- c(beta0, beta1, beta2, beta3, beta4,
                alpha0, alpha1, alpha2, alpha3, alpha4, alpha5)
 
 data <- simulated.data
-fil(y ~ x1 + x2 + x3 + x4, data = simulated.data, parameter, family = binomial(link = "logit"))
+fil(y ~ x1 + x2 + x3 + x4, data = simulated.data, parameter, family = binomial(link = "logit"), na.action = na.pass)
 }
 
 \dontrun{
@@ -122,10 +122,10 @@ fil(y ~ x1 + x2 + x3 + x4, data = simulated.data, parameter, family = binomial(l
 ##### Real data example with separation #####
 #############################################
 data(nhanes)  # load nhanes data
-fil(hyp ~ age2 + age3, data = nhanes, family = binomial(link = "logit"))
+fil(hyp ~ age2 + age3, data = nhanes, family = binomial(link = "logit"), na.action = na.pass)
 
 data(incontinence)  # load nhanes data
-fil(y ~ x1 + x2 + x3, data = incontinence, family = binomial(link = "logit"))
+fil(y ~ x1 + x2 + x3, data = incontinence, family = binomial(link = "logit"), na.action = na.pass)
 }
 }
 
