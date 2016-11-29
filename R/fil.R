@@ -16,8 +16,18 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   }
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
-  if (na.action != "na.pass")
+
+  if (is.character(na.action))
+    na.action <- get(na.action, mode = "function", envir = parent.frame())
+  if (is.function(na.action))
+    na.action <- na.action()
+  if (is.null(na.action$na.action)) {
+    print(na.action)
+    stop("'na.action' not recognized")
+  }
+  if (na.action$na.action != "na.pass")
     stop("unable to pass missing values")
+
   if (missing(data))
     data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)
