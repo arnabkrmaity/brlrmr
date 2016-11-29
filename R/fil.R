@@ -4,7 +4,7 @@
 
 fil <-
 function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
-                k = NULL, na.action)
+                k = NULL, na.pass)
 {
 
   call <- match.call()
@@ -29,11 +29,11 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   # }
   # if (na.action$na.action != "na.pass")
   #   stop("unable to pass missing values")
-  na.action = na.pass
+
   if (missing(data))
     data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)
-  m <- match(c("formula", "data", "na.action"), names(mf), 0L)
+  m <- match(c("formula", "data", "na.pass"), names(mf), 0L)
   mf <- mf[c(1L, m)]
   mf$drop.unused.levels <- TRUE
   mf[[1L]] <- quote(stats::model.frame)
