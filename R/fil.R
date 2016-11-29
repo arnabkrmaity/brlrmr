@@ -4,7 +4,7 @@
 
 fil <-
 function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
-                k = NULL, na.action = "na.pass")
+                k = NULL, na.pass)
 {
 
   call <- match.call()
@@ -19,21 +19,21 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
 
-  if (is.character(na.action))
-    na.action <- get(na.action, mode = "function", envir = parent.frame())
-  if (is.function(na.action))
-    na.action <- na.action()
-  if (is.null(na.action$na.action)) {
-    print(na.action)
-    stop("'na.action' not recognized")
-  }
-  if (na.action$na.action != "na.pass")
-    stop("unable to pass missing values")
+  # if (is.character(na.action))
+  #   na.action <- get(na.action, mode = "function", envir = parent.frame())
+  # if (is.function(na.action))
+  #   na.action <- na.action()
+  # if (is.null(na.action$na.action)) {
+  #   print(na.action)
+  #   stop("'na.action' not recognized")
+  # }
+  # if (na.action$na.action != "na.pass")
+  #   stop("unable to pass missing values")
 
   if (missing(data))
     data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)
-  m <- match(c("formula", "data", "na.action"), names(mf), 0L)
+  m <- match(c("formula", "data", "na.pass"), names(mf), 0L)
   mf <- mf[c(1L, m)]
   mf$drop.unused.levels <- TRUE
   mf[[1L]] <- quote(stats::model.frame)
