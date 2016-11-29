@@ -34,9 +34,7 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   } else {
     x <- model.matrix(mt, mf, contrasts)
   }
-  print(x)
   data <- cbind(y, x[, -1])
-  print(data)
 
   tau <- qnorm(1 - alpha/2)
   n   <- nrow(data)  # number of observations
