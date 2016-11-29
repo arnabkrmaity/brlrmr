@@ -4,7 +4,7 @@
 
 fil <-
 function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
-                k = NULL, na.pass)
+                k = NULL, na.action = na.pass())
 {
 
   call <- match.call()
