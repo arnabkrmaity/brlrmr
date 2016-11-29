@@ -2,7 +2,7 @@
 
 fil <-
 function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
-                k = NULL, na.action)
+                k = NULL, na.action = na.pass)
 {
 
   call <- match.call()
@@ -16,6 +16,8 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   }
   if (family$family != "binomial")
     stop("families other than 'binomial' are not currently implemented")
+  if (na.action != na.pass)
+    stop("unable to pass missing values")
   if (missing(data))
     data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)

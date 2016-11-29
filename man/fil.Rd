@@ -10,11 +10,14 @@ fil
 This provides the estimates using IL method and FIL method as described in the reference.
 }
 \usage{
-fil(data, parameter = NULL, family = binomial, alpha = 0.05,
-interaction = FALSE, k = NULL)
+fil(formula, data, parameter = NULL, family = binomial, alpha = 0.05,
+interaction = FALSE, k = NULL, na.action = na.pass)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
+\item{formula}{
+as in \code{\link{lm}}. The missing values of response are NA.
+}
   \item{data}{
 %%     ~~Describe \code{data} here~~
 The first column of data is binary missing response. The missing observations are denoted by NA. The rest of the columns are covariates or explanatory variables. Note that data is a matrix not a data frame.
@@ -37,6 +40,9 @@ TRUE or FALSE, whether to consider interaction in the missing data model. Curren
   \item{k}{
 %%     ~~Describe \code{k} here~~
 Which covariate has interaction with response. Takes integer values. User must assign a value if interaction = TRUE.
+}
+\item{na.action}{
+as in \code{\link{lm}}. Default is na.pass. Note that setting any other value to na.action will remove the NA's from response and hence will break the code as this package is only intended for missing response data.
 }
 }
 %\details{
@@ -108,7 +114,7 @@ parameter <- c(beta0, beta1, beta2, beta3, beta4,
                alpha0, alpha1, alpha2, alpha3, alpha4, alpha5)
 
 data <- simulated.data
-fil(data, parameter, family = binomial(link = "logit"))
+fil(y ~ x1 + x2 + x3 + x4, data = simulated.data, parameter, family = binomial(link = "logit"))
 }
 
 \dontrun{
@@ -116,7 +122,7 @@ fil(data, parameter, family = binomial(link = "logit"))
 ##### Real data example with separation #####
 #############################################
 data(nhanes)  # load nhanes data
-fil(nhanes, family = binomial(link = "logit"))
+fil(hyp ~ age2 + age3, data = nhanes, family = binomial(link = "logit"))
 
 data(incontinence)  # load nhanes data
 fil(y ~ x1 + x2 + x3, data = incontinence, family = binomial(link = "logit"))
