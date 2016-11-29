@@ -1,5 +1,5 @@
 #' @importFrom stats binomial qnorm
-#' @importFrom stats, contrasts, is.empty.model, model.matrix, model.response,
+#' @importFrom stats contrasts is.empty.model model.matrix model.response
 #' na.pass
 
 fil <-

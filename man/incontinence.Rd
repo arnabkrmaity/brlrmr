@@ -7,9 +7,7 @@
 \format{A data frame with 21 observations on the following 4 variables:
 \describe{
   \item{y}{Response (1 = continent, 0 = otherwise)}
-  \item{x1}{Lower urinary tract measure}
-  \item{x2}{Lower urinary tract measure}
-  \item{x3}{Lower urinary tract measure}
+  \item{\eqn{x_j}}{Lower urinary tract measure, j = 1, 2, 3}
 }}
 \source{
 Heinze, G. (2006). A comparative investigation of methods for logistic
