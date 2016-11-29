@@ -4,7 +4,7 @@
 
 fil <-
 function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, interaction = FALSE,
-                k = NULL, na.action = na.pass())
+                k = NULL, na.action)
 {
 
   call <- match.call()
@@ -29,7 +29,7 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   # }
   # if (na.action$na.action != "na.pass")
   #   stop("unable to pass missing values")
-
+  na.action = na.pass
   if (missing(data))
     data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)
