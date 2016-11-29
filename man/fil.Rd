@@ -119,7 +119,7 @@ data(nhanes)  # load nhanes data
 fil(nhanes, family = binomial(link = "logit"))
 
 data(incontinence)  # load nhanes data
-fil(incontinence, family = binomial(link = "logit"))
+fil(y ~ x1 + x2 + x3, data = incontinence, family = binomial(link = "logit"))
 }
 }
 
