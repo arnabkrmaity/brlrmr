@@ -113,7 +113,8 @@ alpha5 <- -1
 parameter <- c(beta0, beta1, beta2, beta3, beta4,
                alpha0, alpha1, alpha2, alpha3, alpha4, alpha5)
 
-il(y ~ x1 + x2 + x3 + x4, data = simulated.data, parameter, family = binomial(link = "logit"), na.action = na.pass)
+il(y ~ x1 + x2 + x3 + x4, data = simulated.data, parameter,
+family = binomial(link = "logit"), na.action = na.pass)
 }
 
 \dontrun{
