@@ -27,7 +27,6 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   mf[[1L]] <- quote(stats::model.frame)
   mf <- eval(mf, parent.frame())
   y <- model.response(mf, "any")
-  print(y)
   mt <- attr(mf, "terms")
   if (is.empty.model(mt)) {
     x <- NULL

@@ -11,7 +11,7 @@ This provides the estimates using IL method and FIL method as described in the r
 }
 \usage{
 fil(formula, data, parameter = NULL, family = binomial, alpha = 0.05,
-interaction = FALSE, k = NULL, na.action = na.pass)
+interaction = FALSE, k = NULL, na.action)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,7 +20,7 @@ as in \code{\link{lm}}. The missing values of response are NA.
 }
   \item{data}{
 %%     ~~Describe \code{data} here~~
-The first column of data is binary missing response. The missing observations are denoted by NA. The rest of the columns are covariates or explanatory variables. Note that data is a matrix not a data frame.
+as in \code{\link{lm}}. The first column of data is binary missing response. The missing observations are denoted by NA. The rest of the columns are covariates or explanatory variables.
 }
   \item{parameter}{
 %%     ~~Describe \code{parameter} here~~
