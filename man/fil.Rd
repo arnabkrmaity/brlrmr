@@ -42,7 +42,7 @@ TRUE or FALSE, whether to consider interaction in the missing data model. Curren
 Which covariate has interaction with response. Takes integer values. User must assign a value if interaction = TRUE.
 }
 \item{na.action}{
-as in \code{\link{lm}}. Default is na.pass. Note that setting any other value to na.action will remove the NA's from response and hence will break the code as this package is only intended for missing response data.
+as in \code{\link{lm}}. Always set to na.pass. Note that setting any other value to na.action will remove the NA's from response and hence will break the code as this package is only intended for missing response data.
 }
 }
 %\details{
