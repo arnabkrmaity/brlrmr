@@ -33,7 +33,7 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
   if (missing(data))
     data <- environment(formula)
   mf <- match.call(expand.dots = FALSE)
-  m <- match(c("formula", "data"), names(mf), 0L)
+  m <- match(c("formula", "data", "na.action"), names(mf), 0L)
   mf <- mf[c(1L, m)]
   mf$drop.unused.levels <- TRUE
   mf[[1L]] <- quote(stats::model.frame)
