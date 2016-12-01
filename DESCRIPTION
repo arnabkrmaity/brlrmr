@@ -1,6 +1,6 @@
 Package: brlrmr
-Title: This provides the estimates using IL method and FIL method as described
-    in the reference
+Title: Bias Reduction in Logistic Regression with Missing Response when the
+Missing Data Mechanism is Nonignorable
 Version: 0.0.9
 Date: 2016-11-23
 Authors@R: c(person("Arnab", "Maity", email = "akumar@stat.tamu.edu", role = c("aut", "cre")),
