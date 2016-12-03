@@ -70,10 +70,10 @@ as in \code{\link{lm}}. Always set to na.pass. Note that setting any other value
 %% ~put references to the literature/web site here ~
 Ibrahim, J. G. and Lipsitz, S. R. (1996). Parameter estimation from incomplete data in binomial regression when the missing data mechanism is nonignorable. \emph{Biometrics}, 52:1071--1078.
 }
-\author{
+%\author{
 %%  ~~who you are~~
-Arnab Kumar Maity, Vivek Pradhan, and Ujjwal Das
-}
+%Arnab Kumar Maity
+%}
 %\note{
 %%  ~~further notes~~
 %}

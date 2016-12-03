@@ -68,12 +68,12 @@ as in \code{\link{lm}}. Always set to na.pass. Note that setting any other value
 }
 \references{
 %% ~put references to the literature/web site here ~
-Bias Reduction in Logistic Regression with Missing Responses when the Missing Data Mechanism is Nonignorable. Maity A.K., Pradhan V. and Das, U.
+Bias Reduction in Logistic Regression with Missing Responses when the Missing Data Mechanism is Nonignorable.
 }
-\author{
+%\author{
 %%  ~~who you are~~
-Arnab Kumar Maity, Vivek Pradhan, and Ujjwal Das
-}
+%Arnab Kumar Maity
+%}
 %\note{
 %%  ~~further notes~~
 %}
