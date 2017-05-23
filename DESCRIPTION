@@ -1,12 +1,18 @@
 Package: brlrmr
-Title: Bias Reduction in Logistic Regression with Missing Response when the
-       Missing Data Mechanism is Nonignorable
-Version: 0.0.9
+Title: Bias Reduction with Missing Binary Response
+Version: 0.1.0
 Date: 2016-11-23
 Authors@R: c(person("Arnab", "Maity", email = "akumar@stat.tamu.edu", role = c("aut", "cre")),
              person("Vivek", "Pradhan", email = "vip296@mail.harvard.edu", role = "ctb"),
              person("Ujjwal", "Das", email = "ujjwal.das@iimu.ac.in", role = "ctb"))
-Description: See reference for details.
+Description: Provides two main functions, il() and fil(). The il() function 
+implements the EM algorithm developed by Ibrahim and Lipsitz (1996)
+<DOI:10.2307/2533068> to estimate the parameters of a logistic 
+regression model with the missing response when the missing data 
+mechanism is nonignorable. The fil() function implements the algorithm 
+proposed by Maity et. al. (2017+) 
+<https://github.com/arnabkrmaity/brlrmr> to reduce the bias produced by 
+the method of Ibrahim and Lipsitz (1996) <DOI:10.2307/2533068>.
 Depends: R (>= 2.10)
 Imports:
     boot,
