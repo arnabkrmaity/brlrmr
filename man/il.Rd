@@ -65,6 +65,7 @@ as in \code{\link{lm}}. Always set to na.pass. Note that setting any other value
   \item{alpha.se.hat }{standard error of the them.}
   \item{z.value.alpha }{Wald Z value for them.}
   \item{p.value.alpha }{p values for them.}
+  \item{sep }{separation indicator = 1 if separation, = 0 otherwise}
 }
 \references{
 %% ~put references to the literature/web site here ~
