@@ -228,12 +228,20 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
     full.y <- full.data[, 1]
     full.r <- full.data[, (p1 + 1)]
     q      <- NULL
+    W      <- diag(w)
+    Ws     <- sqrt(W)
+    H      <- Ws %*% full.X %*% chol2inv((chol(t(full.X) %*% W %*% full.X))) %*% t(full.X) %*% Ws
 
 
     for(j in 1:p1)
     {
-      q[j] <- sum(w * (full.y - mu) * full.X[, j])
+      q[j] <- sum(w * (full.y - mu + H[j, j]*(0.5 - mu)) * full.X[, j])
     }
+
+    # for(j in 1:p1)
+    # {
+    #   q[j] <- sum(w * (full.y - mu) * full.X[, j])
+    # }
 
     s <- matrix(0, nrow = n.full, ncol = p1)
 
