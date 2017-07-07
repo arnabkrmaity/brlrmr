@@ -131,11 +131,6 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
       q[j] <- sum(w * (full.y - mu + H[j, j]*(0.5 - mu)) * full.X[, j])
     }
 
-    # for(j in 1:p1)
-    # {
-    #   q[j] <- sum(w * (full.y - mu) * full.X[, j])
-    # }
-
     s <- matrix(0, nrow = n.full, ncol = p1)
 
     for(i in 1:n.full)
@@ -184,14 +179,6 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
         s[i, j] <- (full.r[i] - mu[i] + H[j, j]*(0.5 - mu[i])) * full.X[i, j]
       }  # S_i is p dimensional vector
     }
-
-    # for(i in 1:n.full)
-    # {
-    #   for(j in 1:(p1 + 2))
-    #   {
-    #     s[i, j] <- (full.r[i] - mu[i]) * full.X[i, j]
-    #   }  # S_i is p dimensional vector
-    # }
 
     second.term <- 0
 
@@ -258,11 +245,6 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
       q[j] <- sum(w * (full.y - mu + H[j, j]*(0.5 - mu)) * full.X[, j])
     }
 
-    # for(j in 1:p1)
-    # {
-    #   q[j] <- sum(w * (full.y - mu) * full.X[, j])
-    # }
-
     s <- matrix(0, nrow = n.full, ncol = p1)
 
     for(i in 1:n.full)
@@ -272,14 +254,6 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
         s[i, j] <- (full.y[i] - mu[i] + H[j, j]*(0.5 - mu[i])) * full.X[i, j]
       }  # S_i is p dimensional vector
     }
-
-    # for(i in 1:n.full)
-    # {
-    #   for(j in 1:p1)
-    #   {
-    #     s[i, j] <- (full.y[i] - mu[i]) * full.X[i, j]
-    #   }  # S_i is p dimensional vector
-    # }
 
     second.term <- 0
 
@@ -308,7 +282,6 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
     {
       q[j] <- sum(w * (full.r - mu + H[j, j]*(0.5 - mu)) * full.Xy[, j])
     }
-    # q[p1 + 1] <- sum(w * (full.r - mu) * full.y)
 
     s <- matrix(0, nrow = n.full, ncol = (p1 + 1))
 
@@ -318,17 +291,7 @@ function(formula, data, parameter = NULL, family = binomial, alpha = 0.05, inter
       {
         s[i, j] <- (full.r[i] - mu[i] + H[j, j]*(0.5 - mu[i])) * full.Xy[i, j]
       }  # S_i is p dimensional vector
-      # s[i, (p1 + 1)] <- (full.r[i] - mu[i]) * full.y[i]
     }
-
-    # for(i in 1:n.full)
-    # {
-    #   for(j in 1:p1)
-    #   {
-    #     s[i, j] <- (full.r[i] - mu[i]) * full.X[i, j]
-    #   }  # S_i is p dimensional vector
-    #   s[i, (p1 + 1)] <- (full.r[i] - mu[i]) * full.y[i]
-    # }
 
     second.term <- 0
 
