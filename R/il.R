@@ -273,7 +273,7 @@ il <-
 
         Fisher.alpha <- em.il.result$Fisher.alpha
         full.Xy <- cbind(full.X, full.y)
-        mu <- boot::inv.logit(full.Xy %*% current.parameter[(p1 +1):length(beta.hat.firth)])
+        mu <- boot::inv.logit(full.Xy %*% current.parameter[(p1 +1):length(beta.hat)])
         q      <- rep(0, p1 + 1)
 
 
