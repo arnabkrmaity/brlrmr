@@ -281,7 +281,7 @@ il <-
         {
           q[j] <- sum(w * (full.r - mu) * full.Xy[, j])
         }
-        # q[p1 + 1] <- sum(w * (full.r - mu) * full.y)
+
 
         s <- matrix(0, nrow = n.full, ncol = (p1 + 1))
 
@@ -291,7 +291,6 @@ il <-
           {
             s[i, j] <- (full.r[i] - mu[i]) * full.Xy[i, j]
           }  # S_i is p dimensional vector
-          # s[i, (p1 + 1)] <- (full.r[i] - mu[i]) * full.y[i]
         }
 
         second.term <- 0
