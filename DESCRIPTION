@@ -1,6 +1,6 @@
 Package: brlrmr
 Title: Bias Reduction with Missing Binary Response
-Version: 0.1.3
+Version: 0.1.4
 Date: 2016-11-23
 Authors@R: c(person("Arnab", "Maity", email = "akumar@stat.tamu.edu", role = c("aut", "cre")),
              person("Vivek", "Pradhan", email = "vip296@mail.harvard.edu", role = "ctb"),
